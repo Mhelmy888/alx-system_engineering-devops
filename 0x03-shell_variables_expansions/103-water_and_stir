@@ -1,2 +1,4 @@
 #!/bin/bash
-result_bestchol=$(echo "$WATER" | tr 'water' '01234' | tr -d '\n'; echo "+"; echo "$STIR" | tr 'stir.' '01234') | dc | tr -d '\n'; echo | tr '01234567' 'bestchol'
+result_decimal=$(( $(echo "$WATER" | tr 'water' '01234') + $(echo "$STIR" | tr 'stir.' '01234') ))
+result_bestchol=$(echo "obase=bestchol; ibase=10; $result_decimal" | dc)
+echo "$result_bestchol"
