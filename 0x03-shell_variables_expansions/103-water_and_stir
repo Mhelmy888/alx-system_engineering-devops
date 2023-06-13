@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "ibase=water;obase=bestchol;$(tr 'water' '01234' <<< "$WATER") + $(tr 'stir.' '01234' <<< "$STIR")" | bc
+result_decimal=$(( $(echo "$WATER" | tr 'water' '01234') + $(echo "$STIR" | tr 'stir.' '01234') )) result_bestchol=$(printf "%b" "$(printf '%o' "$result_decimal" | sed 's/./& /g')" | tr '01234567' 'bestchol') echo "$result_bestchol"
